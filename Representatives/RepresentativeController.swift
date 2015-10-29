@@ -10,11 +10,8 @@ import Foundation
 
 class RepresentativeController {
     
-    static let sharedInstance = RepresentativeController()
     
-    var representativesArray: [Representative] = []
-    
-    func searchRepresentatives(state: String, completion: (representativesArray: [Representative]?) ->Void ) {
+    static func searchRepresentatives(state: String, completion: (representativesArray: [Representative]?) ->Void ) {
         
         let stateURL = NetworkController.searchURL(state)
         
@@ -27,12 +24,14 @@ class RepresentativeController {
                     
                     if let resultsArray = jsonData["results"] as? [[String: AnyObject]] {
                         
+                        var representativesArray: [Representative] = []
+                        
                         for rep in resultsArray {
                             if let representative = Representative(jsonDictionary: rep) {
-                                self.representativesArray.append(representative)
+                                representativesArray.append(representative)
                             }
                         }
-                        completion(representativesArray: self.representativesArray)
+                        completion(representativesArray: representativesArray)
                         
                         
                     } else {

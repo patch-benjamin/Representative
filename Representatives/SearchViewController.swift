@@ -13,21 +13,38 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     //MARK: - Properties
     let states = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     
+    var representativesArray: [Representative] = []
+    
+    
     @IBOutlet weak var statePickerView: UIPickerView!
     
     
     @IBAction func searchButtonTapped(sender: AnyObject) {
+        
+        let statePickerValue = states[statePickerView.selectedRowInComponent(1)]
+        
+        RepresentativeController.searchRepresentatives(statePickerValue) { (representativesArray) -> Void in
+            
+            if let representativesArray = representativesArray {
+                self.representativesArray = representativesArray
+                self.performSegueWithIdentifier("showResults", sender: self)
+                
+                
+                
+            } else {
+                print("no representatives found")
+            }
+            
+            
+        }
+        
         
     }
     
     
     
     override func viewDidLoad() {
-        let searchState = NetworkController.searchRepresentatives("UT")
-          NetworkController.dataAtURL(searchState) { (data) -> Void in
-            print(data)
-        }
-        
+        super.viewDidLoad()
     }
   
     
@@ -43,6 +60,18 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return states[row]
+    }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier ==  "showResults" {
+            
+            let detailView = segue.destinationViewController as! ResultsTableViewController
+            
+            detailView.representativesArray = self.representativesArray
+        
+        }
     }
     
 }
