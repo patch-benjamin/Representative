@@ -15,12 +15,16 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     var representativesArray: [Representative] = []
     
+    var loadingStatusBaseText = "Getting Representatives for: "
+    @IBOutlet weak var loadingStatusLabel: UILabel!
     
     @IBOutlet weak var statePickerView: UIPickerView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var searchAllButton: UIButton!
+    
+    @IBOutlet weak var findRepresentativeButton: UIButton!
     
     @IBAction func searchButtonTapped(sender: AnyObject) {
         
@@ -48,8 +52,11 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBAction func showAllButtonTapped(sender: UIButton) {
         
         searchAllButton.hidden = true
+        findRepresentativeButton.hidden = true
+        loadingStatusLabel.hidden = false
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
+        
         
         
         for state in states {
@@ -57,7 +64,9 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                 
                 
                 if let representativesArray = representativesArray {
-                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.loadingStatusLabel.text = self.loadingStatusBaseText + state
+                    })
                     representativesArray.forEach({ (rep) -> () in
                         self.representativesArray.append(rep)
                     })
@@ -67,8 +76,10 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.performSegueWithIdentifier("showResults", sender: self)
                             self.activityIndicator.hidden = true
+                            self.loadingStatusLabel.hidden = true
                             self.activityIndicator.stopAnimating()
                             self.searchAllButton.hidden = false
+                            self.findRepresentativeButton.hidden = false
                             self.statesIndex = 0
                             
                         })
@@ -92,6 +103,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidAppear(animated: Bool) {
         activityIndicator.hidden = true
         searchAllButton.hidden = false
+        loadingStatusLabel.hidden = true
+        findRepresentativeButton.hidden = false
     }
   
     

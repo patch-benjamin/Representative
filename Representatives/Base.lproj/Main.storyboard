@@ -45,6 +45,13 @@
                                 <rect key="frame" x="290" y="331" width="20" height="20"/>
                                 <animations/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Getting Representatives for: AK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGz-dJ-gTO">
+                                <rect key="frame" x="168.5" y="288" width="241" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -57,12 +64,16 @@
                             <constraint firstItem="z6d-5A-wFz" firstAttribute="top" secondItem="Cke-4x-RTu" secondAttribute="bottom" constant="8" symbolic="YES" id="Uw6-I4-ztm"/>
                             <constraint firstItem="gNd-so-TKZ" firstAttribute="top" secondItem="z6d-5A-wFz" secondAttribute="bottom" constant="13" id="ZG9-1i-nei"/>
                             <constraint firstAttribute="trailing" secondItem="Cke-4x-RTu" secondAttribute="trailing" id="hip-QL-GRK"/>
+                            <constraint firstItem="JGz-dJ-gTO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSm-a0-bUY"/>
                             <constraint firstItem="Cke-4x-RTu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o8n-Ix-Mc6"/>
+                            <constraint firstItem="JGz-dJ-gTO" firstAttribute="top" secondItem="Cke-4x-RTu" secondAttribute="bottom" constant="8" id="xkr-PW-cN6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Your State" id="io0-WD-Yzy"/>
                     <connections>
                         <outlet property="activityIndicator" destination="gNd-so-TKZ" id="sal-E8-ccd"/>
+                        <outlet property="findRepresentativeButton" destination="z6d-5A-wFz" id="oQt-GD-mP8"/>
+                        <outlet property="loadingStatusLabel" destination="JGz-dJ-gTO" id="BWL-bR-rxA"/>
                         <outlet property="searchAllButton" destination="g3I-xo-gjT" id="pdG-LC-mex"/>
                         <outlet property="statePickerView" destination="Cke-4x-RTu" id="ZQ2-ym-hYp"/>
                         <segue destination="2uU-f4-dZj" kind="show" identifier="showResults" id="T43-MG-l6Q"/>
