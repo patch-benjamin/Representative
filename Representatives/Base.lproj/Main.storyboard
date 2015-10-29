@@ -16,6 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<<<<<<< HEAD
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cke-4x-RTu">
                                 <rect key="frame" x="0.0" y="64" width="600" height="216"/>
@@ -48,6 +49,12 @@
                     <connections>
                         <outlet property="statePickerView" destination="Cke-4x-RTu" id="ZQ2-ym-hYp"/>
                     </connections>
+=======
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="io0-WD-Yzy"/>
+>>>>>>> fdaf7690ea44ff6a232b9c9f65fa116554ae527f
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
