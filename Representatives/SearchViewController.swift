@@ -21,21 +21,21 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     @IBAction func searchButtonTapped(sender: AnyObject) {
         
-        let statePickerValue = states[statePickerView.selectedRowInComponent(1)]
+        let statePickerValue = states[statePickerView.selectedRowInComponent(0)]
         
         RepresentativeController.searchRepresentatives(statePickerValue) { (representativesArray) -> Void in
             
-            if let representativesArray = representativesArray {
-                self.representativesArray = representativesArray
-                self.performSegueWithIdentifier("showResults", sender: self)
-                
-                
-                
-            } else {
-                print("no representatives found")
-            }
-            
-            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if let representativesArray = representativesArray {
+                    self.representativesArray = representativesArray
+                    self.performSegueWithIdentifier("showResults", sender: self)
+                    
+                    
+                    
+                } else {
+                    print("no representatives found")
+                }
+            })
         }
         
         

@@ -9,6 +9,8 @@
 import UIKit
 
 class RepresentativeDetailTableViewController: UITableViewController {
+    
+    var representative: Representative?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,10 @@ class RepresentativeDetailTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.title = self.representative?.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +35,74 @@ class RepresentativeDetailTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 5
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        var cell = UITableViewCell()
+        
+        if let representative = self.representative {
+            
+            switch indexPath.row {
+            case 0:
+                cell = tableView.dequeueReusableCellWithIdentifier("cellOne", forIndexPath: indexPath)
+                cell.textLabel?.text = representative.name
+                cell.detailTextLabel?.text = "\(representative.state!) - \(representative.district!)"
+                cell.imageView?.image = UIImage(named: representative.state!)
+                return cell
+                
+            case 1:
+                cell = tableView.dequeueReusableCellWithIdentifier("cellTwo", forIndexPath: indexPath)
+                cell.textLabel?.text = "Party"
+                cell.detailTextLabel?.text = representative.party
+                return cell
+                
+                
+            case 2:
+                cell = tableView.dequeueReusableCellWithIdentifier("cellTwo", forIndexPath: indexPath)
+                cell.textLabel?.text = "Website"
+                cell.detailTextLabel?.text = representative.link
+                return cell
+                
+            case 3:
+                cell = tableView.dequeueReusableCellWithIdentifier("cellTwo", forIndexPath: indexPath)
+                cell.textLabel?.text = "Phone"
+                cell.detailTextLabel?.text = representative.phone
+                return cell
+                
+            case 4:
+                cell = tableView.dequeueReusableCellWithIdentifier("cellTwo", forIndexPath: indexPath)
+                cell.textLabel?.text = "Office"
+                cell.detailTextLabel?.text = representative.office
+                return cell
+                
+            default:
+                cell = tableView.dequeueReusableCellWithIdentifier("cellOne", forIndexPath: indexPath)
+                cell.textLabel?.text = "No details - vote for someone else"
+                return cell
+            }
+            
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier("cellOne", forIndexPath: indexPath)
+            cell.textLabel?.text = "No details - vote for someone else"
+            return cell
+        }
 
-        // Configure the cell...
-
-        return cell
     }
-    */
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return CGFloat(80)
+        } else {
+            return CGFloat(50)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

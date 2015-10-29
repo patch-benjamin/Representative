@@ -43,9 +43,12 @@ class ResultsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("representativeCell", forIndexPath: indexPath)
 
-        // Configure the cell...
+        let representative = representativesArray[indexPath.row]
+        
+        cell.textLabel?.text = representative.name
+        cell.detailTextLabel?.text = representative.party
 
         return cell
     }
@@ -86,14 +89,18 @@ class ResultsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showRepresentativeDetail" {
+            let detailScene = segue.destinationViewController as! RepresentativeDetailTableViewController
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                detailScene.representative = self.representativesArray[(indexPath.row)]
+            }
+        }
     }
-    */
+    
 
 }
