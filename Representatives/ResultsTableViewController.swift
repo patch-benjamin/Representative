@@ -23,6 +23,10 @@ class ResultsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.title = representativesArray[0].state
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +53,11 @@ class ResultsTableViewController: UITableViewController {
         
         cell.textLabel?.text = representative.name
         cell.detailTextLabel?.text = representative.party
+        if representative.party == "R" {
+            cell.detailTextLabel?.textColor = UIColor.blueColor()
+        } else if representative.party == "D" {
+            cell.detailTextLabel?.textColor = UIColor.redColor()
+        }
 
         return cell
     }

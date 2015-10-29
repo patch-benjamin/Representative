@@ -11,8 +11,9 @@ import Foundation
 class RepresentativeController {
     
     
+    
     static func searchRepresentatives(state: String, completion: (representativesArray: [Representative]?) ->Void ) {
-        
+
         let stateURL = NetworkController.searchURL(state)
         
         NetworkController.dataAtURL(stateURL) { (data) -> Void in
@@ -46,7 +47,5 @@ class RepresentativeController {
                 completion(representativesArray: nil)
             }
         }
-        
     }
-    
 }

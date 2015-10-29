@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Select Your State-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="Representatives" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,28 +26,47 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6d-5A-wFz">
-                                <rect key="frame" x="277" y="288" width="46" height="30"/>
+                                <rect key="frame" x="232" y="288" width="136" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Find Representative"/>
                                 <connections>
                                     <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q1g-tY-DaH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-xo-gjT">
+                                <rect key="frame" x="271" y="326" width="59" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Show All"/>
+                                <connections>
+                                    <action selector="showAllButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dh6-Tv-N0R"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gNd-so-TKZ">
+                                <rect key="frame" x="290" y="331" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cke-4x-RTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H5s-1a-f2z"/>
                             <constraint firstItem="Cke-4x-RTu" firstAttribute="centerX" secondItem="z6d-5A-wFz" secondAttribute="centerX" id="HCW-8z-Nue"/>
+                            <constraint firstItem="gNd-so-TKZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N8S-pG-cyi"/>
+                            <constraint firstItem="g3I-xo-gjT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pr9-9R-TNY"/>
+                            <constraint firstItem="g3I-xo-gjT" firstAttribute="top" secondItem="z6d-5A-wFz" secondAttribute="bottom" constant="8" id="SoD-0X-MZh"/>
                             <constraint firstItem="z6d-5A-wFz" firstAttribute="top" secondItem="Cke-4x-RTu" secondAttribute="bottom" constant="8" symbolic="YES" id="Uw6-I4-ztm"/>
+                            <constraint firstItem="gNd-so-TKZ" firstAttribute="top" secondItem="z6d-5A-wFz" secondAttribute="bottom" constant="13" id="ZG9-1i-nei"/>
                             <constraint firstAttribute="trailing" secondItem="Cke-4x-RTu" secondAttribute="trailing" id="hip-QL-GRK"/>
                             <constraint firstItem="Cke-4x-RTu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o8n-Ix-Mc6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="io0-WD-Yzy"/>
+                    <navigationItem key="navigationItem" title="Select Your State" id="io0-WD-Yzy"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="gNd-so-TKZ" id="sal-E8-ccd"/>
+                        <outlet property="searchAllButton" destination="g3I-xo-gjT" id="pdG-LC-mex"/>
                         <outlet property="statePickerView" destination="Cke-4x-RTu" id="ZQ2-ym-hYp"/>
                         <segue destination="2uU-f4-dZj" kind="show" identifier="showResults" id="T43-MG-l6Q"/>
+                        <segue destination="2uU-f4-dZj" kind="show" identifier="showResults" id="MCp-yp-IHG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -211,4 +230,7 @@
     <resources>
         <image name="AK" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MCp-yp-IHG"/>
+    </inferredMetricsTieBreakers>
 </document>

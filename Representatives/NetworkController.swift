@@ -10,6 +10,7 @@ import Foundation
 
 class NetworkController {
     
+
     static let baseURL = "http://whoismyrepresentative.com/getall_reps_bystate.php?state="
     static let URLSuffix = "&output=json"
     
@@ -18,6 +19,18 @@ class NetworkController {
         let stringURL = baseURL + state + URLSuffix
         
         return NSURL(string: stringURL)!
+    }
+    
+    static func showAll(completion: (data: NSData?) -> Void) {
+        
+        let states = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+
+        for state in states {
+            let url = searchURL(state)
+            dataAtURL(url, completion: { (data) -> Void in
+                completion(data: data)
+            })
+        }
     }
     
     static func dataAtURL(url: NSURL, completion: (data: NSData?) -> Void) {
