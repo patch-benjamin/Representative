@@ -16,10 +16,38 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cke-4x-RTu">
+                                <rect key="frame" x="0.0" y="64" width="600" height="216"/>
+                                <animations/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="XWP-Bm-YhF"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="GmG-wg-j0O"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6d-5A-wFz">
+                                <rect key="frame" x="277" y="288" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q1g-tY-DaH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cke-4x-RTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H5s-1a-f2z"/>
+                            <constraint firstItem="Cke-4x-RTu" firstAttribute="centerX" secondItem="z6d-5A-wFz" secondAttribute="centerX" id="HCW-8z-Nue"/>
+                            <constraint firstItem="z6d-5A-wFz" firstAttribute="top" secondItem="Cke-4x-RTu" secondAttribute="bottom" constant="8" symbolic="YES" id="Uw6-I4-ztm"/>
+                            <constraint firstAttribute="trailing" secondItem="Cke-4x-RTu" secondAttribute="trailing" id="hip-QL-GRK"/>
+                            <constraint firstItem="Cke-4x-RTu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o8n-Ix-Mc6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="io0-WD-Yzy"/>
+                    <connections>
+                        <outlet property="statePickerView" destination="Cke-4x-RTu" id="ZQ2-ym-hYp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
