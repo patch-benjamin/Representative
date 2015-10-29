@@ -23,7 +23,11 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     
     override func viewDidLoad() {
-          print(states.count)
+        let searchState = NetworkController.searchRepresentatives("UT")
+          NetworkController.dataAtURL(searchState) { (data) -> Void in
+            print(data)
+        }
+        
     }
   
     
