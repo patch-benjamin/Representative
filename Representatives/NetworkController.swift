@@ -13,7 +13,7 @@ class NetworkController {
     static let baseURL = "http://whoismyrepresentative.com/getall_reps_bystate.php?state="
     static let URLSuffix = "&output=json"
     
-    static func searchRepresentatives(state: String) -> NSURL {
+    static func searchURL(state: String) -> NSURL {
         
         let stringURL = baseURL + state + URLSuffix
         
