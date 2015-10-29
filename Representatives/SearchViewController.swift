@@ -8,16 +8,11 @@
 
 import UIKit
 
-<<<<<<< HEAD
 class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-=======
-class SearchViewController: UIViewController {
->>>>>>> fdaf7690ea44ff6a232b9c9f65fa116554ae527f
     
     //MARK: - Properties
     let states = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     
-<<<<<<< HEAD
     @IBOutlet weak var statePickerView: UIPickerView!
     
     
@@ -50,6 +45,4 @@ class SearchViewController: UIViewController {
         return states[row]
     }
     
-=======
->>>>>>> fdaf7690ea44ff6a232b9c9f65fa116554ae527f
 }
